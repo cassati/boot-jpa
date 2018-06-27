@@ -8,8 +8,9 @@ import java.io.Serializable;
 public class User implements Serializable {
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+	@SequenceGenerator(name = "user_id_seq", sequenceName = "t_user_id_seq")
+	private Long id;
 	@Column
 	private String name;
 	@Column
@@ -22,11 +23,11 @@ public class User implements Serializable {
 	private String remark;
 
 
-	public void setId(Integer value) {
+	public void setId(Long value) {
 		this.id = value;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 	public void setName(String value) {
